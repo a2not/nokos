@@ -1,8 +1,8 @@
-test: 
-	cargo xtest
-
 run: 
 	cargo xrun
+
+test: 
+	cargo xtest
 
 .PHONY: run test
 
