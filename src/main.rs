@@ -1,9 +1,11 @@
 #![no_std] // force not to link the Rust standard library
 #![no_main] // disable all Rust-level entry points
-
 #![feature(custom_test_frameworks)]
 #![test_runner(crate::test_runner)]
 #![reexport_test_harness_main = "test_main"]
+
+mod vga_buffer;
+mod serial;
 
 use core::panic::PanicInfo;
 
@@ -33,7 +35,7 @@ pub fn exit_qemu(exit_code: QemuExitCode) {
 
 #[cfg(test)]
 fn test_runner(tests: &[&dyn Fn()]) {
-    println!("Running {} tests", tests.len());
+    serial_println!("Running {} tests", tests.len());
     for test in tests {
         test();
     }
@@ -43,12 +45,11 @@ fn test_runner(tests: &[&dyn Fn()]) {
 
 #[test_case]
 fn trivial_assertion() {
-    print!("trivial assertion... ");
+    serial_print!("trivial assertion... ");
     assert_eq!(1, 1);
-    println!("[ok]");
+    serial_println!("[ok]");
 }
 
-mod vga_buffer;
 
 #[no_mangle] // force not to mangle the name of this function
 pub extern "C" fn _start() -> ! {
