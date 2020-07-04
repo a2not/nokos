@@ -4,6 +4,7 @@
 #![test_runner(nokos::test_runner)]
 #![reexport_test_harness_main = "test_main"]
 
+use nokos::println;
 use core::panic::PanicInfo;
 
 #[no_mangle] // don't mangle the name of this function
@@ -18,3 +19,7 @@ fn panic(info: &PanicInfo) -> ! {
     nokos::test_panic_handler(info)
 }
 
+#[test_case]
+fn test_println() {
+    println!("test_println output");
+}
