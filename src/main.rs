@@ -23,6 +23,13 @@ fn test_runner(tests: &[&dyn Fn()]) {
     }
 }
 
+#[test_case]
+fn trivial_assertion() {
+    print!("trivial assertion... ");
+    assert_eq!(1, 1);
+    println!("[ok]");
+}
+
 mod vga_buffer;
 
 #[no_mangle] // force not to mangle the name of this function
