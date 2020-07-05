@@ -18,7 +18,7 @@ jobs:
           command: 'cargo install cargo-xbuild'
       - run:
           name: additional configuration for cargo-xbuild
-          command: 'rustup component add rust-source'
+          command: 'rustup component add rust-src'
       - run:
           name: install bootimage crate
           command: 'cargo install bootimage'
