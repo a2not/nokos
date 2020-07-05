@@ -4,5 +4,11 @@ run:
 test: 
 	cargo xtest
 
-.PHONY: run test
+git:
+	git diff
+	git add .
+	git commit
+	git push
+
+.PHONY: run test git
 
