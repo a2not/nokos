@@ -14,8 +14,17 @@ jobs:
           name: install rust nightly
           command: 'rustup override add nightly'
       - run:
+          name: install cargo-xbuild
+          command: 'cargo install cargo-xbuild'
+      - run:
+          name: additional configuration for cargo-xbuild
+          command: 'rustup component add rust-source'
+      - run:
           name: install bootimage crate
           command: 'cargo install bootimage'
+      - run:
+          name: additional configuration for bootimage
+          command: 'rustup component add llvm-tools-preview'
       - run:
           name: run test
           command: 'make test'
