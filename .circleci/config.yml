@@ -9,7 +9,7 @@ jobs:
       - checkout:
       - run:
           name: install CMAKE and QEMU
-          command: 'sudo apt-get update && sudo apt-get install -y cmake qemu'     
+          command: 'sudo apt-get update && sudo apt-get install -y cmake qemu-system-x86'     
       - run:
           name: install rust nightly
           command: 'rustup override add nightly'
