@@ -26,14 +26,6 @@ jobs:
           name: additional configuration for bootimage
           command: 'rustup component add llvm-tools-preview'
       - run:
-          name: build 
-          command: cargo xbuild
-      - run:
-          name: see file tree (debugging purpose)
-          command: |
-            sudo apt-get install -y tree
-            tree .
-      - run:
           name: run test
           command: 'make test'
 
