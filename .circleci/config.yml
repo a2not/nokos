@@ -28,7 +28,7 @@ jobs:
       - run:
           name: see file tree (debugging purpose)
           command: |
-            sudo install -y tree
+            sudo apt-get install -y tree
             tree .
       - run:
           name: run test
