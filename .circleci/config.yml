@@ -1,10 +1,13 @@
-version: 2.1
+version: 2.0
+
+executors:
+  primaryexec:
+    docker:
+      - image: ubuntu:latest
 
 jobs:
-  build:
-    machine:
-      - enabled: true
-      - image: circleci/classic:latest
+  tester:
+    executor: primaryexec
     steps:
       - run: make test
 
