@@ -26,6 +26,9 @@ jobs:
           name: additional configuration for bootimage
           command: 'rustup component add llvm-tools-preview'
       - run:
+          name: see file tree (debugging purpose)
+          command: 'tree .'
+      - run:
           name: run test
           command: 'make test'
 
