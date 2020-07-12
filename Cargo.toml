@@ -27,6 +27,11 @@ features = ["spin_no_std"]
 name = "should_panic"
 harness = false
 
+[[test]]
+name = "stack_overflow"
+harness = false
+
+
 # profile used for `cargo build`
 [profile.dev]
 panic = "abort" # disable stack unwinding on panic
