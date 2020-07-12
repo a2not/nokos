@@ -30,3 +30,7 @@ lazy_static! {
     };
 }
 
+pub fn init() {
+    GDT.load();
+}
+
