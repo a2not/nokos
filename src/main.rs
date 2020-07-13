@@ -17,11 +17,7 @@ pub extern "C" fn _start() -> ! {
     test_main();
 
     println!("It did not crash!");
-    loop {
-        // provoking a deadlock on WRITER
-        use nokos::print;
-        print!("-");
-    }
+    nokos::hlt_loop();
 }
 
 /// This function is called on panic.
@@ -29,7 +25,7 @@ pub extern "C" fn _start() -> ! {
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     println!("{}", info);
-    loop {}
+    nokos::hlt_loop();
 }
 
 #[cfg(test)]
