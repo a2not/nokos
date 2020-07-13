@@ -17,7 +17,11 @@ pub extern "C" fn _start() -> ! {
     test_main();
 
     println!("It did not crash!");
-    loop {}
+    loop {
+        // provoking a deadlock on WRITER
+        use nokos::print;
+        print!("-");
+    }
 }
 
 /// This function is called on panic.
