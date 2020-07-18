@@ -11,8 +11,8 @@ use bootloader::{BootInfo, entry_point};
 entry_point!(kernel_main);
 
 fn kernel_main(boot_info: &'static BootInfo) -> ! {
-    use nokos::memory;
     use x86_64::{structures::paging::Page, VirtAddr};
+    use nokos::memory::{self, BootInfoFrameAllocator};
 
     println!("Hello World{}", "!");
     nokos::init();
@@ -21,7 +21,9 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
 
     let mut mapper = unsafe { memory::init(phys_mem_offset) };
 
-    let mut frame_allocator = memory::EmptyFrameAllocator;
+    let mut frame_allocator = unsafe{
+        BootInfoFrameAllocator::init(&boot_info.memory_map)
+    };
 
     // map an unused page
     let page = Page::containing_address(VirtAddr::new(0));
