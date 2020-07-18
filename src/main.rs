@@ -6,9 +6,11 @@
 
 use core::panic::PanicInfo;
 use nokos::println;
+use bootloader::{BootInfo, entry_point};
 
-#[no_mangle]
-pub extern "C" fn _start() -> ! {
+entry_point!(kernel_main);
+
+fn kernel_main(_boot_info: &'static BootInfo) -> ! {
     println!("Hello World{}", "!");
 
     nokos::init();
@@ -38,4 +40,5 @@ fn panic(info: &PanicInfo) -> ! {
 fn panic(info: &PanicInfo) -> ! {
     nokos::test_panic_handler(info)
 }
+
 
