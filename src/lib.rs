@@ -92,3 +92,6 @@ pub fn hlt_loop() -> ! {
     }
 }
 
+extern crate alloc;
+pub mod allocator;
+
