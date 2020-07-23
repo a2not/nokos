@@ -4,9 +4,12 @@
 #![test_runner(nokos::test_runner)]
 #![reexport_test_harness_main = "test_main"]
 
+extern crate alloc;
+
 use core::panic::PanicInfo;
 use nokos::println;
 use bootloader::{BootInfo, entry_point};
+use alloc::boxed::Box;
 
 entry_point!(kernel_main);
 
@@ -32,6 +35,8 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
     // write the string `New!` to the screen through the new mapping
     let page_ptr: *mut u64 = page.start_address().as_mut_ptr();
     unsafe { page_ptr.offset(400).write_volatile(0x_f021_f077_f065_f04e)};
+    
+    let x = Box::new(41);
 
     #[cfg(test)]
     test_main();
