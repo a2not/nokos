@@ -9,13 +9,13 @@ jobs:
       - checkout:
       - run:
           name: install CMAKE and QEMU
-          command: 'sudo apt-get update && sudo apt-get install -y cmake qemu-system-x86'     
+          command: 'sudo apt-get update && sudo apt-get install -y cmake qemu-system-x86'
       - run:
           name: install rust nightly
           command: 'rustup override add nightly'
       - run:
           name: install cargo-xbuild
-          command: 'cargo install cargo-xbuild'
+          command: 'cargo install cargo-xbuild --debug'
       - run:
           name: additional configuration for cargo-xbuild
           command: 'rustup component add rust-src'
