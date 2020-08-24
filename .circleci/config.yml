@@ -15,7 +15,7 @@ jobs:
           command: 'rustup override add nightly'
       - run:
           name: install cargo-xbuild
-          command: 'cargo install cargo-xbuild --debug'
+          command: 'cargo install cargo-xbuild'
       - run:
           name: additional configuration for cargo-xbuild
           command: 'rustup component add rust-src'

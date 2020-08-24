@@ -42,3 +42,4 @@ panic = "abort" # disable stack unwinding on panic
 # profile used for `cargo build --release`
 [profile.release]
 panic = "abort" # disable stack unwinding on panic
+codegen-units = 1
