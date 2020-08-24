@@ -1,7 +1,7 @@
-run: 
+run:
 	cargo xrun
 
-test: 
+test:
 	cargo xtest
 
 git:
