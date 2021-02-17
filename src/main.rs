@@ -6,17 +6,17 @@
 
 extern crate alloc;
 
-use core::panic::PanicInfo;
-use nokos::println;
-use bootloader::{BootInfo, entry_point};
 use alloc::{boxed::Box, vec, vec::Vec, rc::Rc};
+use nokos::println;
+use bootloader::{entry_point, BootInfo};
+use core::panic::PanicInfo;
 
 entry_point!(kernel_main);
 
 fn kernel_main(boot_info: &'static BootInfo) -> ! {
-    use x86_64::VirtAddr;
     use nokos::allocator;
     use nokos::memory::{self, BootInfoFrameAllocator};
+    use x86_64::VirtAddr;
     
     println!("Hello World{}", "!");
     nokos::init();
@@ -69,5 +69,4 @@ fn panic(info: &PanicInfo) -> ! {
 fn panic(info: &PanicInfo) -> ! {
     nokos::test_panic_handler(info)
 }
-
 
