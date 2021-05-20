@@ -1,7 +1,7 @@
 [package]
 name = "nokos"
 version = "0.1.0"
-authors = ["plokiy <fb503d52.af1c4d@gmail.com>"]
+authors = ["a2not <fb503d52.af1c4d@gmail.com>"]
 edition = "2018"
 
 [[test]]
